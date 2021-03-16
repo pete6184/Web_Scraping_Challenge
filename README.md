@@ -4,6 +4,8 @@
 
 In this assignment, you will build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. The following outlines what you need to do.
 
+Theis assignment utilizes Flask, BeautifulSoup, and MongoDB
+
 ### Before You Begin
 
 1. Create a new repository for this project called `web-scraping-challenge`. **Do not add this homework to an existing repository**.
