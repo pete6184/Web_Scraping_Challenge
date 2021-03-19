@@ -1,10 +1,11 @@
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
 import pandas as pd
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
-executable_path = {'executable_path': 'chromedriver.exe'}
+executable_path = {'executable_path': ChromeDriverManager().install()}
 browser = Browser('chrome', **executable_path, headless=False)
 
 
@@ -33,6 +34,7 @@ def scrape():
     mars_info['news_title'] = news_title
     mars_info['news_p'] = news_p
 
+    browser.quit()
 
 # JPL Mars Space Images
 # def scrape_image():
@@ -56,6 +58,7 @@ def scrape():
     # Add entry into dictionary
     mars_info['featured_image_url'] = featured_image_url
 
+    browser.quit()
 
 # Mars Facts
 # def scrape_facts():
@@ -126,6 +129,8 @@ def scrape():
 
         hemisphere_urls.append(hemisphere_dict)
 
-    mars_info['hemisphere_urls'] = hemisphere_urls
+    mars_info['hemisphere_dict'] = hemisphere_dict
+
+    browser.quit()
 
     return mars_info
