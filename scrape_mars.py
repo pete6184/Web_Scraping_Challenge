@@ -14,6 +14,9 @@ mars_info = {}
 # NASA Mars News
 def scrape_news():
 
+    # Initialize browser
+    browser = init_browser()
+
     # visit NASA Mars news site
     news_url = "https://mars.nasa.gov/news/"
     browser.visit(news_url)
@@ -30,9 +33,13 @@ def scrape_news():
         news_title = news_soup.find_all('div', class_="content_title")[1].text
         news_p = news_soup.find_all('div', class_="article_teaser_body")[0].text
 
-    except:   
-        return None
-    return news_title, news_p
+        # Add entries into dictionary
+        mars_info['news_title'] = news_title
+        mars_info['news_p'] = news_p
+
+    # except:   
+        # return None
+    # return news_title, news_p
 
 
 # JPL Mars Space Images
@@ -50,8 +57,22 @@ def scrape_image():
     image_html = browser.html
     image_soup = bs(image_html, 'html.parser')
 
-    
     image_url = image_soup.find('img', class_='fancybox-image')['src']
 
     featured_image_url = f"https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/{image_url}"
+
+    # Add entry into dictionary
+    mars_info['featured_image_url'] = featured_image_url
+
+# Mars Facts
+def scrape_facts():
+
+    # Visit the Mars Facts webpage and use Pandas to scrape the table containing facts about the planet
+    facts_url = "https://space-facts.com/mars/"
+
+    # Use Panda's `read_html` to parse the url
+    tables = pd.read_html(facts_url)
+
+
+
 
