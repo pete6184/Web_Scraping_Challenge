@@ -17,7 +17,7 @@ mongo = PyMongo(app)
 def home():
 
     mars_info = mongo.db.mars_info.find_one()
-    return render_template("index.html", mars_info=mars_info)
+    return render_template("index.html", mars=mars_info)
 
 
 # Route that will trigger the scrape function

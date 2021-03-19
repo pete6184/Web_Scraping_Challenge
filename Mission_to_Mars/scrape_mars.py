@@ -1,12 +1,15 @@
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
 import pandas as pd
-# from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
+# def init_browser():
+    # executable_path = {'executable_path': ChromeDriverManager().install()}
+    # executable_path = {'executable_path': "chromedriver.exe"}
+    # return Browser('chrome', **executable_path, headless=False)
 
-# executable_path = {'executable_path': ChromeDriverManager().install()}
-executable_path = {'executable_path': "chromedriver.exe"}
+executable_path = {'executable_path': ChromeDriverManager().install()}
 browser = Browser('chrome', **executable_path, headless=False)
 
 
@@ -15,6 +18,8 @@ mars_info = {}
 
 # NASA Mars News
 def scrape():
+
+    # browser = init_browser()
 
     # visit NASA Mars news site
     news_url = "https://mars.nasa.gov/news/"
