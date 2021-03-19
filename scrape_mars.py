@@ -12,7 +12,7 @@ browser = Browser('chrome', **executable_path, headless=False)
 mars_info = {}
 
 # NASA Mars News
-def scrape_news():
+def scrape():
 
     # visit NASA Mars news site
     news_url = "https://mars.nasa.gov/news/"
@@ -35,7 +35,7 @@ def scrape_news():
 
 
 # JPL Mars Space Images
-def scrape_image():
+# def scrape_image():
 
     # Read HTML from website and create a Beautiful Soup object
     image_url = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html"
@@ -58,7 +58,7 @@ def scrape_image():
 
 
 # Mars Facts
-def scrape_facts():
+# def scrape_facts():
 
     # Visit the Mars Facts webpage and use Pandas to scrape the table containing facts about the planet
     facts_url = "https://space-facts.com/mars/"
@@ -80,7 +80,7 @@ def scrape_facts():
 
 
 # Mars Hemispheres
-def scrape_hemispheres():
+# def scrape_hemispheres():
 
     # Read HTML from website and create a Beautiful Soup object
     hemi_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
