@@ -1,38 +1,57 @@
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
 import pandas as pd
-from flask import Flask, render_template
-from flask_pymongo import PyMongo
-
-# Create an instance of Flask
-app = Flask(__name__)
-
-# Use PyMongo to establish Mongo connection
-mongo = PyMongo(app, uri="mongodb://localhost:27017/weather_app")
-
-# Route to render index.html template using data from Mongo
-@app.route("/")
-def home():
+import time
 
 
+executable_path = {'executable_path': 'chromedriver.exe'}
+browser = Browser('chrome', **executable_path, headless=True)
 
 
+# create empty dictinary
+mars_info = {}
 
-# Route that will trigger the scrape function
-@app.route("/scrape")
-def scrape():
+# NASA Mars News
+def scrape_news():
 
-    # Run the scrape function
-    costa_data = scrape_costa.scrape_info()
+    # visit NASA Mars news site
+    news_url = "https://mars.nasa.gov/news/"
+    browser.visit(news_url)
 
-    # Update the Mongo database using update and upsert=True
-    mongo.db.collection.update({}, costa_data, upsert=True)
+    time.sleep(1)
 
-    # Redirect back to home page
-    return redirect(url_for('home'))
-
-
+    # Scrape page into Soup
+    news_html = browser.html
+    news_soup = bs(news_html, "html.parser")
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    # Scrape the NASA Mars News Site and collect the latest News Title and Paragraph Text.
+    try:
+        news_title = news_soup.find_all('div', class_="content_title")[1].text
+        news_p = news_soup.find_all('div', class_="article_teaser_body")[0].text
+
+    except:   
+        return None
+    return news_title, news_p
+
+
+# JPL Mars Space Images
+def scrape_image():
+
+    # Read HTML from website and create a Beautiful Soup object
+    image_url = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html"
+    browser.visit(image_url)
+
+    browser.click_link_by_partial_text('FULL IMAGE')
+
+    time.sleep(1)
+
+    # Scrape page into Soup
+    image_html = browser.html
+    image_soup = bs(image_html, 'html.parser')
+
+    
+    image_url = image_soup.find('img', class_='fancybox-image')['src']
+
+    featured_image_url = f"https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/{image_url}"
+
