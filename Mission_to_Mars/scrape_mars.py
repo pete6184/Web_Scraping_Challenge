@@ -24,13 +24,15 @@ def scrape():
 
     # visit NASA Mars news site
     news_url = "https://mars.nasa.gov/news/"
-    browser.visit(news_url)
+    if browser.html != news_url:
+        browser.visit(news_url)
 
     time.sleep(1)
 
     # Scrape page into Soup
     news_html = browser.html
     news_soup = bs(news_html, "html.parser")
+
 
 
     # Scrape the NASA Mars News Site and collect the latest News Title and Paragraph Text.

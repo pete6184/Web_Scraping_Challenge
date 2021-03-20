@@ -1,0 +1,26 @@
+h1 {
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+.background {
+    background-color: rgb(201, 197, 197);
+    padding: 2em;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.mars-news {
+    margin-left: 1em;
+}
+
+.facts {
+    text-align: center;
+}
+
+.hemi-images {
+    size: .5em;
+}
