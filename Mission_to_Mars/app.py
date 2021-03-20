@@ -8,9 +8,9 @@ from flask_pymongo import PyMongo
 app = Flask(__name__)
 
 # Use PyMongo to establish Mongo connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
+app.config["MONGO_URI"] = "mongodb://localhost/mars_app"
 mongo = PyMongo(app)
-
 
 # Route to render index.html template using data from Mongo
 @app.route("/")

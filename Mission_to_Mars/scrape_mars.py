@@ -10,7 +10,8 @@ import time
     # return Browser('chrome', **executable_path, headless=False)
 
 executable_path = {'executable_path': ChromeDriverManager().install()}
-browser = Browser('chrome', **executable_path, headless=False)
+# browser = Browser('chrome', **executable_path, headless=False)
+browser = Browser("chrome", executable_path="chromedriver", headless=True)
 
 
 # create empty dictinary
@@ -35,6 +36,8 @@ def scrape():
     # Scrape the NASA Mars News Site and collect the latest News Title and Paragraph Text.
     news_title = news_soup.find_all('div', class_="content_title")[1].text
     news_p = news_soup.find_all('div', class_="article_teaser_body")[0].text
+    print(news_title)
+    print(mars_info)
 
     # Add entries into dictionary
     mars_info['news_title'] = news_title
@@ -136,9 +139,10 @@ def scrape():
 
         hemisphere_urls.append(hemisphere_dict)
 
-    mars_info['hemisphere_dict'] = hemisphere_dict
+    # mars_info['hemisphere_dict'] = hemisphere_dict
+    mars_info['hemisphere_urls'] = hemisphere_urls
 
-    # browser.quit()
+    browser.quit()
 
     print(mars_info)
     return mars_info
