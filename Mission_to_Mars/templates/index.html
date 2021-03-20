@@ -27,13 +27,13 @@
     <!-- add in Featured image and facts table -->
     <div class="container-fluid"> 
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-lg-8 col-md-6 col-sm-12">
           <h3>Featured Mars Image</h3>
-          <img src="{{mars.featured_image_url}}" alt="Featued Mars Image">
+          <img src="{{mars.featured_image_url}}" alt="Featued Mars Image" width="100%">
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-lg-4 col-md-6 col-sm-12">
           <h3>Fun Facts About Mars</h3>
-          <div class="text-center">
+          <div class="data-box">
             {{mars.html_table|safe}}
           </div>
         </div>
@@ -44,10 +44,11 @@
      <!-- add in hemispheres photos -->
      <div class="container-fluid text-center hemi-images">
       <h3>Mars' Hemispheres</h3>
-      <div class="row">
+      <hr>
+      <div class="row hemi-fonts">
           {% for hemisphere in mars.hemisphere_urls %}
-          <div class="col-lg-6 col-md-6 col-sm-12 hemi-images">  
-            <img src="{{hemisphere.img_url}}" alt="">
+          <div class="col-lg-6 col-md-6 col-sm-12">  
+            <img src="{{hemisphere.img_url}}" alt="" width="600px">
             <p>{{hemisphere.title}}</p>
           </div>
           {% endfor %}

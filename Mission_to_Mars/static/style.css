@@ -4,9 +4,12 @@ h1 {
 }
 
 .background {
-    background-color: rgb(201, 197, 197);
+    color: white;
     padding: 2em;
     text-align: center;
+    background-image: url(https://scx2.b-cdn.net/gfx/news/2020/astrobiologi.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 h3 {
@@ -17,10 +20,17 @@ h3 {
     margin-left: 1em;
 }
 
-.facts {
-    text-align: center;
+.data-box {
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-top: 1em;
+}
+
+.hemi-fonts {
+    font-weight: bolder;
+    font-size: 1.5em;
 }
 
 .hemi-images {
-    size: .5em;
+    margin: 1em;
 }
