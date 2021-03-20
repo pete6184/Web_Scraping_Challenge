@@ -14,3 +14,7 @@ h1 {
 .background {
     background-color: darkgray;
 }
+
+h3 {
+    text-align: center;
+}

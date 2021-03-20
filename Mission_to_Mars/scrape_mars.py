@@ -144,5 +144,4 @@ def scrape():
 
     browser.quit()
 
-    print(mars_info)
     return mars_info
