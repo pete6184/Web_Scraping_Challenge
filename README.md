@@ -3,6 +3,8 @@
 ## Requirements & Summary
 This assignment utilized Jupyter Notebook, Pandas, Requests/Splinter, Flask, BeautifulSoup, and MongoDB.
 
+In order to get the website to open properly you need to run the app.py in a live server.
+
 
 
 ![mission_to_mars](Images/mission_to_mars.png)
