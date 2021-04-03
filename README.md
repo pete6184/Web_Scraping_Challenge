@@ -3,7 +3,11 @@
 ## Requirements & Summary
 This assignment utilized Jupyter Notebook, Pandas, Requests/Splinter, Flask, BeautifulSoup, and MongoDB.
 
-In order to get the website to open properly you need to run the app.py in a live server.
+We were tasked with scraping different websites to pull specific information and pictures related to Mars and then creating a single website to display the information we scraped.
+
+I wrote a python script to run the scraping code and then created a route ('/scrape') to import the python script and call the scrape function. I then created a new database via MongoDB to stor all of the scraped data. Lastly, I created an html (and .css) file to display all of the data and pictures that we scraped.
+
+In order to get the website to open properly you need to run app.py in a live server.
 
 
 
